@@ -12,6 +12,13 @@ body {
     -moz-box-sizing: border-box;
 }
 
+#cover {
+    background-image: url("cover.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 .page {
     width: 210mm;
     min-height: 297mm;
@@ -19,6 +26,20 @@ body {
     margin: 10mm auto;
     display: flex;
     flex-direction: column;
+}
+
+#self {
+    border: 5px solid #38a48e;
+    border-radius: 10px;
+    padding: 0px 30px;
+    background-color: #fff;
+    font-size: 18px;
+    color: #38a48e;
+    width: 200px;
+    align-self: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .biodata-box {
@@ -81,10 +102,17 @@ body {
 .input-group input {
     flex-grow: 1;
 }
-.image {
+.image-landscape {
     align-self: center;
     width: 400px;
     height: 225px;
+    background-color: gray;
+    margin-bottom: 20px;
+}
+.image-potrait {
+    align-self: center;
+    width: 300px;
+    height: 400px;
     background-color: gray;
     margin-bottom: 20px;
 }
