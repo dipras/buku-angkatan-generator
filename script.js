@@ -425,86 +425,97 @@ const data = [
 ]
 
 
-let content = "";
+let content = ``;
 
-data.forEach((v, i) => {
-    const curContent = `
-    <div class="page">
-            <input type="file" id="upload-${i}" class="uploads" style="display: none;" accept="image/png, image/gif, image/jpeg" />
-            <div class="image dump-image" id="dump-image-${i}"></div>
-            <img src="" class="image" id="image-${i}" style="display: none;"></img>
-            
-            <div class="biodata-box">
-                <div class="biodata">
-                    <h2>Biodata</h2>
-                </div>
-                <div class="questions">
-                    <p>NAMA LENGKAP</p>
-                    <p>NAMA PANGGILAN</p>
-                    <p>TANGGAL LAHIR</p>
-                    <p>DAERAH ASAL</p>
-                    <p>INSTAGRAM/LINKEDIN</p>
-                    <p>ASAL SEKOLAH</p>
-                </div>
-                <div class="answers">
-                    <p>: ${v.nama_lengkap} </p>
-                    <p>: ${v.nama_panggilan}</p>
-                    <p>: ${v.tanggal_lahir} </p>
-                    <p>: ${v.daerah_asal}</p>
-                    <p>: ${v.instagram} / ${v.linkedin}</p>
-                    <p>: ${v.asal_sekolah}</p>
-                </div>
-            </div>
-            <div class="impresion-box">
-                <div class="biodata">
-                    <h2>First Impresion</h2>
-                </div>
-                <p>Kesan Pertama: </p>
-                <div class="box-input">
-                    <div class="input-group">
-                        <input type="text" class="input" id="input-${i}" />
-                        <button id="btn-${i}">Submit</button>
+const render = (position) => {
+    // document.querySelector("#choose").style.display = "none";
+    data.forEach((v, i) => {
+        const curContent = `
+        <div class="page">
+                <input type="file" id="upload-${i}" class="uploads" style="display: none;" accept="image/png, image/gif, image/jpeg" />
+                <div class="image image-${position} dump-image" id="dump-image-${i}"></div>
+                <img src="" class="image image-${position}" id="image-${i}" style="display: none;"></img>
+                
+                <div class="biodata-box">
+                    <div class="biodata">
+                        <h2>Biodata</h2>
                     </div>
-                    <p id="input-text-${i}" style="display: none; font-weight: normal;"></p>
+                    <div class="questions">
+                        <p>NAMA LENGKAP</p>
+                        <p>NAMA PANGGILAN</p>
+                        <p>TANGGAL LAHIR</p>
+                        <p>DAERAH ASAL</p>
+                        <p>INSTAGRAM/LINKEDIN</p>
+                        <p>ASAL SEKOLAH</p>
+                    </div>
+                    <div class="answers">
+                        <p>: ${v.nama_lengkap} </p>
+                        <p>: ${v.nama_panggilan}</p>
+                        <p>: ${v.tanggal_lahir} </p>
+                        <p>: ${v.daerah_asal}</p>
+                        <p>: ${v.instagram} / ${v.linkedin}</p>
+                        <p>: ${v.asal_sekolah}</p>
+                    </div>
+                </div>
+                <div class="impresion-box">
+                    <div class="biodata">
+                        <h2>First Impresion</h2>
+                    </div>
+                    <p>Kesan Pertama: </p>
+                    <div class="box-input">
+                        <div class="input-group">
+                            <input type="text" class="input" id="input-${i}" />
+                            <button id="btn-${i}">Submit</button>
+                        </div>
+                        <p id="input-text-${i}" style="display: none; font-weight: normal;"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
-
-    content += curContent;
-})
-
-document.querySelector(".book").innerHTML = content;
-
-for(let i = 0; i < data.length; i++) {
-    const btnEl = document.querySelector(`#btn-${i}`);
-    const textEl = document.querySelector(`#input-text-${i}`);
-    const inputEl = document.querySelector(`#input-${i}`);
-    btnEl.addEventListener("click", () => {
-        textEl.innerHTML = inputEl.value;
-
-        textEl.style.display = "block";
-        inputEl.style.display = "none";
-        btnEl.style.display = "none";
-
+        `;
+    
+        content += curContent;
     })
+    
+    document.querySelector(".book").innerHTML = content;
+    
+    for(let i = 0; i < data.length; i++) {
+        const btnEl = document.querySelector(`#btn-${i}`);
+        const textEl = document.querySelector(`#input-text-${i}`);
+        const inputEl = document.querySelector(`#input-${i}`);
+        btnEl.addEventListener("click", () => {
+            textEl.innerHTML = inputEl.value;
+    
+            textEl.style.display = "block";
+            inputEl.style.display = "none";
+            btnEl.style.display = "none";
+    
+        })
+    }
+    
+    document.querySelectorAll(".dump-image").forEach((El, id) => {
+        El.addEventListener("click", () => {
+            document.querySelector(`#upload-${id}`).click()
+        });
+    });
+    
+    document.querySelectorAll(".uploads").forEach((El, id) => {
+        El.addEventListener("change", event => {
+            
+            var image = document.getElementById(`image-${id}`);
+            var dumpimage = document.getElementById(`dump-image-${id}`);
+            image.style.display = "block";
+            image.src = URL.createObjectURL(event.target.files[0]);
+    
+            dumpimage.style.display = "none"
+        })
+    });
+
 }
 
-document.querySelectorAll(".dump-image").forEach((El, id) => {
-    El.addEventListener("click", () => {
-        document.querySelector(`#upload-${id}`).click()
-    });
-});
+document.querySelector("#landscape").addEventListener('click', () => {
+    render("landscape")
+})
 
-document.querySelectorAll(".uploads").forEach((El, id) => {
-    El.addEventListener("change", event => {
-        
-        var image = document.getElementById(`image-${id}`);
-        var dumpimage = document.getElementById(`dump-image-${id}`);
-        image.style.display = "block";
-	    image.src = URL.createObjectURL(event.target.files[0]);
-
-        dumpimage.style.display = "none"
-    })
-});
-
+document.querySelector("#potrait").addEventListener('click', () => {
+    render("landscape")
+})
