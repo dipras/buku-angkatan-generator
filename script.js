@@ -425,7 +425,77 @@ const data = [
 ]
 
 
-let content = ``;
+let content = `
+    <div class="page" id="cover">
+    </div>
+    <div class="page">
+            <div id="self">
+                <p>DATA DIRI</p>
+            </div>
+
+            <input type="file" id="self-upload" style="display: none;" accept="image/png, image/gif, image/jpeg" />
+            <img src="" class="image-potrait" id="self-image" >
+
+            </img>
+
+            <div class="biodata-box">
+                <div class="biodata">
+                    <h2>Biodata</h2>
+                </div>
+                <div class="questions">
+                    <p>NAMA LENGKAP</p>
+                    <p>NAMA PANGGILAN</p>
+                    <p>TANGGAL LAHIR</p>
+                    <p>DAERAH ASAL</p>
+                    <p>INSTAGRAM/LINKEDIN</p>
+                    <p>ASAL SEKOLAH</p>
+                </div>
+                <div class="answers">
+                    <div class="box-input">
+                        <div class="input-group" id="input-group-name">
+                            <input type="text" class="input" id="input-name" />
+                            <button id="btn-name">Submit</button>
+                        </div>
+                        <p id="input-text-name" style="display: none; font-weight: normal;"></p>
+                    </div>
+                    <div class="box-input">
+                        <div class="input-group" id="input-group-nickname">
+                            <input type="text" class="input" id="input-nickname" />
+                            <button id="btn-nickname">Submit</button>
+                        </div>
+                        <p id="input-text-nickname" style="display: none; font-weight: normal;"></p>
+                    </div>
+                    <div class="box-input">
+                        <div class="input-group" id="input-group-ttl">
+                            <input type="text" class="input" id="input-ttl" />
+                            <button id="btn-ttl">Submit</button>
+                        </div>
+                        <p id="input-text-ttl" style="display: none; font-weight: normal;"></p>
+                    </div>
+                    <div class="box-input">
+                        <div class="input-group" id="input-group-from">
+                            <input type="text" class="input" id="input-from" />
+                            <button id="btn-from">Submit</button>
+                        </div>
+                        <p id="input-text-from" style="display: none; font-weight: normal;"></p>
+                    </div>
+                    <div class="box-input">
+                        <div class="input-group" id="input-group-ig">
+                            <input type="text" class="input" id="input-ig" />
+                            <button id="btn-ig">Submit</button>
+                        </div>
+                        <p id="input-text-ig" style="display: none; font-weight: normal;"></p>
+                    </div>
+                    <div class="box-input">
+                        <div class="input-group" id="input-group-school">
+                            <input type="text" class="input" id="input-school" />
+                            <button id="btn-school">Submit</button>
+                        </div>
+                        <p id="input-text-school" style="display: none; font-weight: normal;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>`;
 
 const render = (position) => {
     // document.querySelector("#choose").style.display = "none";
@@ -472,40 +542,40 @@ const render = (position) => {
                 </div>
             </div>
         `;
-    
+
         content += curContent;
     })
-    
+
     document.querySelector(".book").innerHTML = content;
-    
-    for(let i = 0; i < data.length; i++) {
+
+    for (let i = 0; i < data.length; i++) {
         const btnEl = document.querySelector(`#btn-${i}`);
         const textEl = document.querySelector(`#input-text-${i}`);
         const inputEl = document.querySelector(`#input-${i}`);
         btnEl.addEventListener("click", () => {
             textEl.innerHTML = inputEl.value;
-    
+
             textEl.style.display = "block";
             inputEl.style.display = "none";
             btnEl.style.display = "none";
-    
+
         })
     }
-    
+
     document.querySelectorAll(".dump-image").forEach((El, id) => {
         El.addEventListener("click", () => {
             document.querySelector(`#upload-${id}`).click()
         });
     });
-    
+
     document.querySelectorAll(".uploads").forEach((El, id) => {
         El.addEventListener("change", event => {
-            
+
             var image = document.getElementById(`image-${id}`);
             var dumpimage = document.getElementById(`dump-image-${id}`);
             image.style.display = "block";
             image.src = URL.createObjectURL(event.target.files[0]);
-    
+
             dumpimage.style.display = "none"
         })
     });
@@ -518,4 +588,31 @@ document.querySelector("#landscape").addEventListener('click', () => {
 
 document.querySelector("#potrait").addEventListener('click', () => {
     render("landscape")
+})
+
+document.querySelector("#self-image").addEventListener("click", () => {
+    document.querySelector(`#self-upload`).click()
+})
+
+document.querySelector("#self-upload").addEventListener("change", event => {
+
+    var image = document.getElementById(`self-image`);
+    image.style.display = "block";
+    image.src = URL.createObjectURL(event.target.files[0]);
+
+})
+
+const arr = ["name", "nickname", "ttl", "from", "ig", "school"];
+arr.forEach(i => {
+    const btnEl = document.querySelector(`#btn-${i}`);
+    const textEl = document.querySelector(`#input-text-${i}`);
+    const inputEl = document.querySelector(`#input-${i}`);
+    const inputGroupEl = document.querySelector(`#input-group-${i}`);
+    btnEl.addEventListener("click", () => {
+        textEl.innerHTML = ": " + inputEl.value;
+
+        textEl.style.display = "block";
+        inputGroupEl.style.display = "none"
+
+    })
 })

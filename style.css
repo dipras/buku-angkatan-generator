@@ -40,6 +40,7 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 22px;
+    margin-bottom: 20px;
 }
 
 .biodata-box {
@@ -99,8 +100,17 @@ body {
     flex-direction: row;
 }
 
+.answers .input-group {
+    margin: 25px;
+}
+
 .input-group input {
     flex-grow: 1;
+}
+
+.input-group p {
+    margin: 0;
+    padding: 0;
 }
 .image-landscape {
     align-self: center;
