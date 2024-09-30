@@ -596,7 +596,7 @@ document.querySelector("#landscape").addEventListener('click', () => {
 })
 
 document.querySelector("#potrait").addEventListener('click', () => {
-    render("landscape")
+    render("potrait")
 })
 
 document.querySelector("#self-image").addEventListener("click", () => {
