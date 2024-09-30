@@ -589,6 +589,33 @@ const render = (position) => {
         })
     });
 
+    document.querySelector("#self-image").addEventListener("click", () => {
+        document.querySelector(`#self-upload`).click()
+    })
+    
+    document.querySelector("#self-upload").addEventListener("change", event => {
+    
+        var image = document.getElementById(`self-image`);
+        image.style.display = "block";
+        image.src = URL.createObjectURL(event.target.files[0]);
+    
+    })
+    
+    const arr = ["name", "nickname", "ttl", "from", "ig", "school"];
+    arr.forEach(i => {
+        const btnEl = document.querySelector(`#btn-${i}`);
+        const textEl = document.querySelector(`#input-text-${i}`);
+        const inputEl = document.querySelector(`#input-${i}`);
+        const inputGroupEl = document.querySelector(`#input-group-${i}`);
+        btnEl.addEventListener("click", () => {
+            textEl.innerHTML = ": " + inputEl.value;
+    
+            textEl.style.display = "block";
+            inputGroupEl.style.display = "none"
+    
+        })
+    })
+
 }
 
 document.querySelector("#landscape").addEventListener('click', () => {
@@ -597,31 +624,4 @@ document.querySelector("#landscape").addEventListener('click', () => {
 
 document.querySelector("#potrait").addEventListener('click', () => {
     render("potrait")
-})
-
-document.querySelector("#self-image").addEventListener("click", () => {
-    document.querySelector(`#self-upload`).click()
-})
-
-document.querySelector("#self-upload").addEventListener("change", event => {
-
-    var image = document.getElementById(`self-image`);
-    image.style.display = "block";
-    image.src = URL.createObjectURL(event.target.files[0]);
-
-})
-
-const arr = ["name", "nickname", "ttl", "from", "ig", "school"];
-arr.forEach(i => {
-    const btnEl = document.querySelector(`#btn-${i}`);
-    const textEl = document.querySelector(`#input-text-${i}`);
-    const inputEl = document.querySelector(`#input-${i}`);
-    const inputGroupEl = document.querySelector(`#input-group-${i}`);
-    btnEl.addEventListener("click", () => {
-        textEl.innerHTML = ": " + inputEl.value;
-
-        textEl.style.display = "block";
-        inputGroupEl.style.display = "none"
-
-    })
 })
