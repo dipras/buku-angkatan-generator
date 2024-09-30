@@ -1,0 +1,115 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font-family: 'Poppins'
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 10mm auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.biodata-box {
+    margin-top: 50px;
+    border: 5px solid #38a48e;
+    border-bottom: 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 24px;
+    box-shadow: 0px 12px 0px 0px #38a48e;
+    position: relative;
+}
+
+.biodata-box p {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.biodata {
+    position: absolute;
+    top: -50px;
+    border: 5px solid #38a48e;
+    border-radius: 10px;
+    padding: 0px 30px;
+    background-color: #fff;
+    font-size: 18px;
+    color: #38a48e;
+}
+
+.impresion-box {
+    margin-top: 100px;
+    border: 5px solid #38a48e;
+    border-bottom: 0;
+    border-radius: 10px;
+    box-shadow: 0px 12px 0px 0px #38a48e;
+    padding: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.impresion-box p {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.box-input {
+    flex-grow: 1;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.input-group input {
+    flex-grow: 1;
+}
+.image {
+    align-self: center;
+    width: 400px;
+    height: 225px;
+    background-color: gray;
+    margin-bottom: 20px;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+    }
+
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
