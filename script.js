@@ -430,7 +430,10 @@ let content = "";
 data.forEach((v, i) => {
     const curContent = `
     <div class="page">
-            <div class="image"></div>
+            <input type="file" id="upload-${i}" class="uploads" style="display: none;" />
+            <div class="image dump-image" id="dump-image-${i}"></div>
+            <img src="" class="image" id="image-${i}" style="display: none;"></img>
+            
             <div class="biodata-box">
                 <div class="biodata">
                     <h2>Biodata</h2>
@@ -486,3 +489,22 @@ for(let i = 0; i < data.length; i++) {
 
     })
 }
+
+document.querySelectorAll(".dump-image").forEach((El, id) => {
+    El.addEventListener("click", () => {
+        document.querySelector(`#upload-${id}`).click()
+    });
+});
+
+document.querySelectorAll(".uploads").forEach((El, id) => {
+    El.addEventListener("change", event => {
+        
+        var image = document.getElementById(`image-${id}`);
+        var dumpimage = document.getElementById(`dump-image-${id}`);
+        image.style.display = "block";
+	    image.src = URL.createObjectURL(event.target.files[0]);
+
+        dumpimage.style.display = "none"
+    })
+});
+
