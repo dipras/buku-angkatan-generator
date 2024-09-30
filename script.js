@@ -430,6 +430,15 @@ const data = [
         "instagram": "ridhrmd",
         "linkedin": "Ridho Ramadhan",
         "asal_sekolah": "SMA 1 Krian"
+      },
+      {
+        "nama_lengkap": "Veryandra Putra Peztaria",
+        "nama_panggilan": "Andra",
+        "tanggal_lahir": "31 Januari 2007",
+        "daerah_asal": "Surabaya",
+        "instagram": "@andraaaaaaaaa_",
+        "linkedin": "Veryandra Putra Peztaria",
+        "asal_sekolah": "SMK St Louis Surabaya"
       }
 ]
 
