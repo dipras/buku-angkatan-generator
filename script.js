@@ -430,7 +430,7 @@ let content = "";
 data.forEach((v, i) => {
     const curContent = `
     <div class="page">
-            <input type="file" id="upload-${i}" class="uploads" style="display: none;" />
+            <input type="file" id="upload-${i}" class="uploads" style="display: none;" accept="image/png, image/gif, image/jpeg" />
             <div class="image dump-image" id="dump-image-${i}"></div>
             <img src="" class="image" id="image-${i}" style="display: none;"></img>
             
