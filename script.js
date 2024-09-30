@@ -421,7 +421,16 @@ const data = [
         "instagram": "666.arthurs",
         "linkedin": "Alif Saputra",
         "asal_sekolah": "SMKN 3 Pamek"
-    }
+    },
+    {
+        "nama_lengkap": "Ridho Ramadhan",
+        "nama_panggilan": "Ridho",
+        "tanggal_lahir": "16 Oktober 2005",
+        "daerah_asal": "Surabaya, Jawa Timur",
+        "instagram": "ridhrmd",
+        "linkedin": "Ridho Ramadhan",
+        "asal_sekolah": "SMA 1 Krian"
+      }
 ]
 
 
